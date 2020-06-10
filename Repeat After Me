@@ -70,10 +70,20 @@ namespace Repeat_After_Me
                     } else
                     {
                         Console.WriteLine("Nice job, you got through the first level. Things are about to get harder...");
+                        badFlag = badFlag - badFlag;
+                        Console.WriteLine(badFlag);
                     }
+                }
+
+                switch (badFlag)
+                {
+                    //use a switch here
                 }
             }
 
+
+
+            /*
             Console.Clear();
 
             object[] collection2 = { "burger", "sauerkraut", "despicable", "knowledgebase", "activity" };
@@ -108,8 +118,8 @@ namespace Repeat_After_Me
             
             
             Console.Read();
-
-
+            */
+            Console.Read();
 
         }
     }
