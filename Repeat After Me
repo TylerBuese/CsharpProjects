@@ -11,21 +11,21 @@ namespace Repeat_After_Me
             Console.Clear();
             Console.SetCursorPosition(13, 13);
             Console.WriteLine("Your objective is to repeat after me. If I say something, you say it back.");
-            System.Threading.Thread.Sleep(2000);
+            Console.ReadLine();
             Console.Clear();
             Console.SetCursorPosition(9, 9);
             Console.WriteLine("You have a limited amount of time to repeat after each phrase is presented to you.");
-            System.Threading.Thread.Sleep(3000);
+            Console.ReadLine();
             Console.Clear();
             Console.SetCursorPosition(13, 13);
             Console.WriteLine("And if you run out of time...");
-            System.Threading.Thread.Sleep(3000);
+            Console.ReadLine();
             Console.SetCursorPosition(13, 13);
             Start:
             Console.Clear();
             Console.SetCursorPosition(13, 13);
             Console.WriteLine("You lose.");
-            System.Threading.Thread.Sleep(2000);
+            Console.ReadLine();
             Console.WriteLine("Press 'R' when you're ready.");
             var userInput = Convert.ToString(Console.ReadLine());
             if (userInput == "R")
@@ -54,9 +54,41 @@ namespace Repeat_After_Me
                 if (userInput1 == Convert.ToString(item))
                 {
                     Console.WriteLine("Congratulations, you typed in " + item);
+                    System.Threading.Thread.Sleep(1000);
+                    Console.Clear();
+
                 } else
                 {
-                    Console.WriteLine("You suck! You didn't type in: " + item);
+                    Console.WriteLine("You didn't type in: " + item);
+                    badFlag++;
+                    Console.WriteLine("Strike " + badFlag);
+                    if (badFlag == 3)
+                    {
+                        Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
+                        System.Threading.Thread.Sleep(3000);
+                        goto Start;
+                    } else
+                    {
+                        Console.WriteLine("Nice job, you got through the first level. Things are about to get harder...");
+                    }
+                }
+            }
+
+            Console.Clear();
+
+            object[] collection2 = { "burger", "sauerkraut", "despicable", "knowledgebase", "activity" };
+            foreach (var item in collection2)
+            {
+                
+                Console.WriteLine("Say: " + item);
+                var userInput1 = Console.ReadLine();
+                if (userInput == Convert.ToString(item))
+                {
+                    Console.WriteLine("Nice job, you typed in " + item);
+                    Console.Clear();
+                } else
+                {
+                    Console.WriteLine("You didn't type in: " + item);
                     badFlag++;
                     Console.WriteLine("Strike " + badFlag);
                     if (badFlag == 3)
@@ -65,7 +97,12 @@ namespace Repeat_After_Me
                         System.Threading.Thread.Sleep(3000);
                         goto Start;
                     }
+                    else
+                    {
+                        Console.WriteLine("Nice job, you got through the first level. Things are about to get harder...");
+                    }
                 }
+
             }
 
             
