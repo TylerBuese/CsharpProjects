@@ -7,33 +7,69 @@ namespace Repeat_After_Me
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Your object is to repeat after me. If I say something, you say it back.");
-            Console.WriteLine(" ");
-            Console.WriteLine("You have a limited amount of time to repeat after each phrase is presented to you. If you run out of time...");
+        
+            Console.Clear();
+            Console.SetCursorPosition(13, 13);
+            Console.WriteLine("Your objective is to repeat after me. If I say something, you say it back.");
+            System.Threading.Thread.Sleep(2000);
+            Console.Clear();
+            Console.SetCursorPosition(9, 9);
+            Console.WriteLine("You have a limited amount of time to repeat after each phrase is presented to you.");
+            System.Threading.Thread.Sleep(3000);
+            Console.Clear();
+            Console.SetCursorPosition(13, 13);
+            Console.WriteLine("And if you run out of time...");
+            System.Threading.Thread.Sleep(3000);
+            Console.SetCursorPosition(13, 13);
+            Start:
+            Console.Clear();
+            Console.SetCursorPosition(13, 13);
             Console.WriteLine("You lose.");
-
+            System.Threading.Thread.Sleep(2000);
             Console.WriteLine("Press 'R' when you're ready.");
             var userInput = Convert.ToString(Console.ReadLine());
-                if (userInput == "R")
-                {
-                    Console.Clear();
-                    Console.SetCursorPosition(15, 15);
-                    Console.WriteLine("Ok, let's continue.");
-                } else
-                {
-                    Console.WriteLine("Please press 'R'");
-                }
-
-
-            object[] collection = { "a", "b", "repeat", "supper", "conjunction"};
-            
-            
-
-            foreach (var item in collection)
+            if (userInput == "R")
             {
-                Console.WriteLine(item);
+                Console.Clear();
+                Console.SetCursorPosition(15, 15);
+                Console.WriteLine("Ok, let's continue.");
+                userInput = null;
+            }
+            else
+            {
+                Console.WriteLine("Please press 'R'");
+                userInput = null;
+                goto Start;
             }
 
+
+            object[] collection1 = { "a", "b", "repeat", "supper", "conjunction" };
+
+
+            int badFlag = 0;
+            foreach (var item in collection1)
+            {
+                Console.WriteLine("Say: " + item);
+                var userInput1 = Console.ReadLine();
+                if (userInput1 == Convert.ToString(item))
+                {
+                    Console.WriteLine("Congratulations, you typed in " + item);
+                } else
+                {
+                    Console.WriteLine("You suck! You didn't type in: " + item);
+                    badFlag++;
+                    Console.WriteLine("Strike " + badFlag);
+                    if (badFlag == 3)
+                    {
+                        Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
+                        System.Threading.Thread.Sleep(3000);
+                        goto Start;
+                    }
+                }
+            }
+
+            
+            
             Console.Read();
 
 
