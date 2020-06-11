@@ -7,7 +7,6 @@ namespace Repeat_After_Me
     {
         static void Main(string[] args)
         {
-        
             Console.Clear();
             Console.SetCursorPosition(13, 13);
             Console.WriteLine("Your objective is to repeat after me. If I say something, you say it back.");
@@ -21,7 +20,7 @@ namespace Repeat_After_Me
             Console.WriteLine("And if you run out of time...");
             Console.ReadLine();
             Console.SetCursorPosition(13, 13);
-            Start:
+        Start:
             Console.Clear();
             Console.SetCursorPosition(13, 13);
             Console.WriteLine("You lose.");
@@ -45,81 +44,54 @@ namespace Repeat_After_Me
 
             object[] collection1 = { "a", "b", "repeat", "supper", "conjunction" };
 
-
             int badFlag = 0;
             foreach (var item in collection1)
             {
+                Console.SetCursorPosition(1, 13);
                 Console.WriteLine("Say: " + item);
                 var userInput1 = Console.ReadLine();
                 if (userInput1 == Convert.ToString(item))
                 {
                     Console.WriteLine("Congratulations, you typed in " + item);
-                    System.Threading.Thread.Sleep(1000);
+                    
                     Console.Clear();
 
-                } else
+                }
+                else
                 {
                     Console.WriteLine("You didn't type in: " + item);
                     badFlag++;
                     Console.WriteLine("Strike " + badFlag);
-                    if (badFlag == 3)
+                    if (badFlag == 3) //lose condition
                     {
                         Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
                         System.Threading.Thread.Sleep(3000);
                         goto Start;
-                    } else
-                    {
-                        Console.WriteLine("Nice job, you got through the first level. Things are about to get harder...");
-                        badFlag = badFlag - badFlag;
-                        Console.WriteLine(badFlag);
                     }
                 }
-
-                switch (badFlag)
-                {
-                    //use a switch here
-                }
             }
-
-
-
-            /*
             Console.Clear();
-
-            object[] collection2 = { "burger", "sauerkraut", "despicable", "knowledgebase", "activity" };
-            foreach (var item in collection2)
+            Console.SetCursorPosition(13, 13);
+            Console.WriteLine("Congratulations! You got past level 1!");
+            Console.SetCursorPosition(13, 14);
+            switch (badFlag)
             {
-                
-                Console.WriteLine("Say: " + item);
-                var userInput1 = Console.ReadLine();
-                if (userInput == Convert.ToString(item))
-                {
-                    Console.WriteLine("Nice job, you typed in " + item);
-                    Console.Clear();
-                } else
-                {
-                    Console.WriteLine("You didn't type in: " + item);
-                    badFlag++;
-                    Console.WriteLine("Strike " + badFlag);
-                    if (badFlag == 3)
-                    {
-                        Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
-                        System.Threading.Thread.Sleep(3000);
-                        goto Start;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nice job, you got through the first level. Things are about to get harder...");
-                    }
-                }
+                case 1:
+                    Console.WriteLine("You failed " + badFlag + " Time!");
+                    break;
+                default:
+                    Console.WriteLine("You failed " + badFlag + " Times!");
+                    break;
 
             }
+            badFlag = 0;
+            System.Threading.Thread.Sleep(1000);
+            int Level = 0;
 
-            
-            
+
+
             Console.Read();
-            */
-            Console.Read();
+
 
         }
     }
