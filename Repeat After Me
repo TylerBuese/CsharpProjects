@@ -43,25 +43,25 @@ namespace Repeat_After_Me
 
 
             object[] collection1 = { "a", "b", "repeat", "supper", "conjunction" };
-
+            int Level = 0;
             int badFlag = 0;
             foreach (var item in collection1)
             {
+                Console.Clear();
                 Console.SetCursorPosition(1, 13);
                 Console.WriteLine("Say: " + item);
                 var userInput1 = Console.ReadLine();
                 if (userInput1 == Convert.ToString(item))
                 {
                     Console.WriteLine("Congratulations, you typed in " + item);
-                    
                     Console.Clear();
-
                 }
                 else
                 {
                     Console.WriteLine("You didn't type in: " + item);
                     badFlag++;
                     Console.WriteLine("Strike " + badFlag);
+                    System.Threading.Thread.Sleep(1000);
                     if (badFlag == 3) //lose condition
                     {
                         Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
@@ -76,6 +76,9 @@ namespace Repeat_After_Me
             Console.SetCursorPosition(13, 14);
             switch (badFlag)
             {
+                case 0:
+                    Console.WriteLine("You didn't fail at all! Nicely done!");
+                    break;
                 case 1:
                     Console.WriteLine("You failed " + badFlag + " Time!");
                     break;
@@ -85,12 +88,18 @@ namespace Repeat_After_Me
 
             }
             badFlag = 0;
-            System.Threading.Thread.Sleep(1000);
-            int Level = 0;
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine("You got past level 1. Not bad, lets see what else you can do.");
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine("Press 'R' when you're ready.");
+            
+            var userInput2 = Convert.ToString(Console.ReadLine());
+            if (userInput2 == "R") { }
+            var time = DateTime.Now;
+            Console.WriteLine(time);
 
 
-
-            Console.Read();
+                Console.Read();
 
 
         }
