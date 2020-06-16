@@ -50,24 +50,39 @@ namespace Repeat_After_Me
                 Console.Clear();
                 Console.SetCursorPosition(1, 13);
                 Console.WriteLine("Say: " + item);
+                var startTime = DateTime.Now.AddSeconds(2);
+                Console.WriteLine("starttime " + startTime);
                 var userInput1 = Console.ReadLine();
+                var endTime = DateTime.Now;
+                Console.WriteLine("endtime " + endTime);
                 if (userInput1 == Convert.ToString(item))
                 {
-                    Console.WriteLine("Congratulations, you typed in " + item);
-                    Console.Clear();
-                }
-                else
-                {
-                    Console.WriteLine("You didn't type in: " + item);
-                    badFlag++;
-                    Console.WriteLine("Strike " + badFlag);
-                    System.Threading.Thread.Sleep(1000);
-                    if (badFlag == 3) //lose condition
+                    if (endTime < startTime)
                     {
-                        Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
-                        System.Threading.Thread.Sleep(3000);
-                        goto Start;
+                        Console.WriteLine("Congratulations, you typed in " + item + "Within the alotted time!");
+                        Console.WriteLine(endTime);
+                        Console.WriteLine(startTime);
+                        Console.Clear();
                     }
+                    else
+                    {
+                        Console.WriteLine("You didn't type in: " + item + "Within the alotted time.");
+                        badFlag++;
+                        Console.WriteLine(endTime);
+                        Console.WriteLine(startTime);
+                        Console.WriteLine("Strike " + badFlag);
+                        System.Threading.Thread.Sleep(1000);
+                        if (badFlag == 3) //lose condition
+                        {
+                            Console.WriteLine("Sorry, three strikes and you're out! Back to the shadow realm with you!");
+                            System.Threading.Thread.Sleep(3000);
+                            goto Start;
+                        }
+                    }
+                } else
+                {
+                    Console.WriteLine("You input the statement incorrectly.");
+                    badFlag++;
                 }
             }
             Console.Clear();
@@ -92,14 +107,12 @@ namespace Repeat_After_Me
             Console.WriteLine("You got past level 1. Not bad, lets see what else you can do.");
             System.Threading.Thread.Sleep(5000);
             Console.WriteLine("Press 'R' when you're ready.");
-            
+
             var userInput2 = Convert.ToString(Console.ReadLine());
             if (userInput2 == "R") { }
-            var time = DateTime.Now;
-            Console.WriteLine(time);
 
 
-                Console.Read();
+            Console.Read();
 
 
         }
